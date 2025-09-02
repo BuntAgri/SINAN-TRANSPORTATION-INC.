@@ -1,79 +1,277 @@
-
-<!DOCTYPE html>
-<html lang="fr">
+<!doctype html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>V.E. BATIMENT</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SINAN TRANSPORTATION INC. — Logistics & Support</title>
+  <meta name="description" content="SINAN TRANSPORTATION INC. • transportation support & logistics coordination. Contact support@sinantran.shop, +1 631 230 8359." />
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Inter', sans-serif; background: #f9fafb; color: #111827; line-height: 1.6; }
-    header, footer { background: #1f2937; color: white; text-align: center; padding: 30px; }
-    nav a { color: #fbbf24; margin: 0 12px; text-decoration: none; font-weight: 600; }
-    section { padding: 60px 20px; max-width: 1200px; margin: auto; text-align: center; }
-    h2 { color: #1f2937; margin-bottom: 20px; font-size: 2.4em; }
-    .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-    .gallery img { width: 100%; border-radius: 8px; }
-    .contact-form input, .contact-form textarea {
-      width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 5px;
+    :root{
+      --bg:#081223;          /* deep blue */
+      --panel:#0d1b35;
+      --text:#f5f8ff;
+      --muted:#b6c4df;
+      --primary:#3b82f6;     /* blue */
+      --accent:#06b6d4;      /* cyan */
+      --ring:rgba(59,130,246,.3);
+      --max:1200px;
     }
-    iframe { width: 100%; height: 300px; border: 0; border-radius: 8px; margin-top: 20px; }
+    *{box-sizing:border-box}
+    html,body{margin:0}
+    body{
+      font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;
+      background:var(--bg); color:var(--text); line-height:1.6;
+    }
+    a{color:inherit;text-decoration:none}
+    .container{max-width:var(--max); margin:0 auto; padding:24px}
+
+    /* NAV */
+    .nav{
+      position:sticky; top:0; z-index:50;
+      background:rgba(6,14,30,.7); backdrop-filter:blur(10px);
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .nav-wrap{display:flex; align-items:center; justify-content:space-between}
+    .brand{
+      font-weight:900; letter-spacing:.4px;
+      background:linear-gradient(120deg,var(--primary),var(--accent));
+      -webkit-background-clip:text; background-clip:text; color:transparent;
+    }
+    .menu{display:flex; gap:18px}
+    .menu a{opacity:.9} .menu a:hover{opacity:1}
+
+    /* HERO (animated) */
+    .hero{
+      position:relative; min-height:88vh; display:flex; align-items:center; justify-content:center; text-align:center;
+      overflow:hidden; background:linear-gradient(120deg,#0e1a33,#0b2440);
+    }
+    .gridfx{
+      position:absolute; inset:-50%;
+      background:
+        radial-gradient(circle, rgba(255,255,255,.14) 9%, transparent 20%) 0 0/220px 220px,
+        radial-gradient(circle, rgba(255,255,255,.09) 9%, transparent 20%) 110px 110px/220px 220px;
+      animation:spin 22s linear infinite; filter:blur(1px);
+    }
+    @keyframes spin{from{transform:rotate(0)} to{transform:rotate(360deg)}}
+    .glow{
+      position:absolute; width:1200px; height:1200px; border-radius:50%;
+      background:radial-gradient(closest-side, rgba(6,182,212,.22), transparent 65%);
+      filter: blur(28px);
+    }
+    .hero-content{position:relative; z-index:2; padding:0 18px; max-width:900px}
+    .title{
+      font-size:clamp(32px,6vw,64px); font-weight:900; margin:0 0 10px;
+      text-shadow:0 2px 14px rgba(0,0,0,.55);
+      animation:glow 2.1s ease-in-out infinite alternate;
+    }
+    @keyframes glow{
+      from{ text-shadow:0 2px 10px rgba(0,0,0,.45), 0 0 6px rgba(59,130,246,.25)}
+      to{   text-shadow:0 2px 18px rgba(0,0,0,.65), 0 0 22px rgba(6,182,212,.45)}
+    }
+    .subtitle{opacity:.95; font-size:clamp(14px,2.2vw,18px); margin:0 0 18px}
+    .tags{display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-bottom:18px}
+    .tag{
+      font-size:12px; font-weight:800; letter-spacing:.2px; color:#071426;
+      padding:6px 10px; border-radius:999px; background:linear-gradient(120deg,var(--primary),var(--accent));
+    }
+    .cta-row{display:flex; gap:12px; justify-content:center; flex-wrap:wrap}
+    .btn{
+      display:inline-block; padding:12px 20px; border-radius:14px; font-weight:800;
+      box-shadow:0 14px 32px var(--ring); transition:transform .2s ease, filter .2s ease;
+    }
+    .btn-primary{background:#fff; color:#0b172b}
+    .btn-primary:hover{transform:translateY(-2px); filter:brightness(1.03)}
+    .btn-ghost{background:rgba(255,255,255,.1); color:#fff; border:1px solid rgba(255,255,255,.25)}
+    .btn-ghost:hover{transform:translateY(-2px)}
+
+    /* SECTIONS */
+    section{padding:68px 0}
+    .section-title{
+      font-size:28px; font-weight:900; margin:0 0 8px;
+      background:linear-gradient(120deg,var(--primary),var(--accent));
+      -webkit-background-clip:text; background-clip:text; color:transparent;
+    }
+    .muted{color:var(--muted)}
+
+    /* GALLERY */
+    .gallery{display:grid; gap:18px; grid-template-columns:repeat(2,1fr)}
+    .shot{position:relative; overflow:hidden; border-radius:16px; background:#000}
+    .shot img{width:100%; height:100%; object-fit:cover; display:block; transform:scale(1.02); transition:transform .45s ease, filter .45s ease}
+    .shot:hover img{transform:scale(1.07)}
+
+    /* FEATURES */
+    .features{background:var(--panel)}
+    .features-list{display:grid; gap:14px; max-width:900px; margin:18px auto 0}
+    .feature{
+      background:#0f203e; border:1px solid rgba(255,255,255,.1); border-radius:14px; padding:14px 16px;
+      display:flex; gap:10px; align-items:flex-start; box-shadow:0 10px 24px rgba(0,0,0,.45);
+      transform:translateY(10px); opacity:0; transition:transform .6s ease, opacity .6s ease; color:#eaf2ff;
+    }
+    .feature.show{transform:none; opacity:1}
+    .dot{flex:0 0 10px; height:10px; border-radius:50%; background:var(--accent); margin-top:7px}
+
+    /* COMING SOON */
+    .coming{background:#0a1a33; text-align:center; border-top:1px solid rgba(255,255,255,.08); border-bottom:1px solid rgba(255,255,255,.08)}
+    .badge{display:inline-block; padding:6px 10px; border-radius:999px; font-size:12px; font-weight:800; background:rgba(59,130,246,.16); color:#cfe2ff; border:1px solid rgba(59,130,246,.35)}
+    .marquee{margin-top:14px; white-space:nowrap; overflow:hidden; mask-image:linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent)}
+    .marquee span{display:inline-block; padding:8px 14px; margin-right:16px; border-radius:999px; border:1px dashed rgba(6,182,212,.35); color:#a5f3fc; background:rgba(6,182,212,.08); animation:slide 18s linear infinite}
+    @keyframes slide{from{transform:translateX(0)} to{transform:translateX(-50%)}}
+
+    /* CONTACT */
+    .contact-grid{display:grid; gap:18px; grid-template-columns:1.1fr .9fr}
+    .card{background:#0f203e; border:1px solid rgba(255,255,255,.12); border-radius:14px; padding:18px}
+    .list{list-style:none; padding:0; margin:0}
+    .list li{padding:8px 0; border-bottom:1px dashed rgba(255,255,255,.14)}
+    .btn-send{
+      display:inline-block; margin-top:10px; padding:12px 16px; border-radius:12px; font-weight:800;
+      background:linear-gradient(120deg,var(--primary),var(--accent)); color:#fff; border:0;
+      box-shadow:0 12px 28px var(--ring); cursor:pointer; transition:transform .18s ease, filter .18s ease;
+    }
+    .btn-send:hover{transform:translateY(-2px)}
+    input, textarea{
+      width:100%; padding:12px 14px; border-radius:12px; border:1px solid rgba(255,255,255,.18); outline:none;
+      background:#0b172b; color:#fff; font-size:16px; transition:border .15s ease, box-shadow .15s ease
+    }
+    input:focus, textarea:focus{border-color:rgba(59,130,246,.55); box-shadow:0 0 0 4px rgba(59,130,246,.18)}
+    textarea{min-height:120px; resize:vertical}
+
+    /* FOOTER */
+    footer{padding:28px 0; text-align:center; color:#b9c7df; border-top:1px solid rgba(255,255,255,.08)}
+
+    /* Reveal on scroll */
+    .reveal{opacity:0; transform:translateY(16px); transition:opacity .7s ease, transform .7s ease}
+    .reveal.show{opacity:1; transform:none}
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .gallery{grid-template-columns:1fr}
+      .contact-grid{grid-template-columns:1fr}
+      .menu{display:none}
+    }
   </style>
 </head>
 <body>
 
-<header>
-  <h1>V.E. BATIMENT</h1>
-  <nav>
-    <a href="#about">Présentation</a>
-    <a href="#services">Services</a>
-    <a href="#gallery">Galerie</a>
-    <a href="#contact">Contact</a>
-    <a href="#map">Adresse</a>
-  </nav>
-</header>
-
-<section id="about">
-  <h2>Présentation</h2>
-  <p>Basée à Les Mureaux, V.E. BATIMENT est une entreprise spécialisée dans la maçonnerie générale et les gros travaux de construction. Grâce à une équipe qualifiée, nous réalisons des chantiers sur mesure en respectant les normes de qualité et de sécurité.</p>
-</section>
-
-<section id="services">
-  <h2>Nos Services</h2>
-  <p>Gros œuvre de bâtiment, travaux de maçonnerie, fondations, rénovation structurelle, et accompagnement personnalisé pour tous vos projets de construction.</p>
-</section>
-
-<section id="gallery">
-  <h2>Galerie</h2>
-  <div class="gallery">
-    <img src="https://images.unsplash.com/photo-1570126681032-3a7c41f13b0d?auto=format&fit=crop&w=800&q=80" alt="chantier 1">
-    <img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=800&q=80" alt="chantier 2">
-    <img src="https://images.unsplash.com/photo-1581090700227-1e37b190418e?auto=format&fit=crop&w=800&q=80" alt="chantier 3">
+  <!-- NAV -->
+  <div class="nav" role="navigation" aria-label="Primary">
+    <div class="container nav-wrap">
+      <div class="brand">SINAN TRANSPORTATION INC.</div>
+      <nav class="menu">
+        <a href="#gallery">Gallery</a>
+        <a href="#features">Features</a>
+        <a href="#coming">Coming</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
   </div>
-</section>
 
-<section id="contact">
-  <h2>Contactez-nous</h2>
-  <p>Email : contact@vebatiment.shop</p>
-  <p>Téléphone : +33 6 05 99 64 90</p>
-  <form class="contact-form">
-    <input type="text" placeholder="Nom">
-    <input type="email" placeholder="Email">
-    <textarea placeholder="Votre message"></textarea>
-    <button type="submit">Envoyer</button>
-  </form>
-</section>
+  <!-- HERO -->
+  <header class="hero" role="banner">
+    <div class="gridfx" aria-hidden="true"></div>
+    <div class="glow" aria-hidden="true"></div>
+    <div class="hero-content">
+      <div class="tags">
+        <span class="tag">Transportation Support</span>
+        <span class="tag">Dispatch • Coordination • Compliance</span>
+      </div>
+      <h1 class="title">Moving Freight Forward — Safely & On Time</h1>
+      <p class="subtitle">Route planning, carrier coordination, shipment tracking, and 24/7 operational support.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#contact">Contact Us</a>
+        <a class="btn btn-ghost" href="mailto:support@sinantran.shop">support@sinantran.shop</a>
+        <a class="btn btn-ghost" href="tel:+16312308359">+1 631 230 8359</a>
+      </div>
+    </div>
+  </header>
 
-<section id="map">
-  <h2>Adresse</h2>
-  <p>66 Avenue du Maréchal Foch, 78130 Les Mureaux, France</p>
-  <iframe src="https://www.google.com/maps?q=66+Avenue+du+Mar%C3%A9chal+Foch,+Les+Mureaux,+France&output=embed" allowfullscreen loading="lazy"></iframe>
-</section>
+  <!-- GALLERY -->
+  <section id="gallery" class="container">
+    <h2 class="section-title reveal">Gallery</h2>
+    <p class="muted reveal">Scenes from the road, yard, and control room.</p>
+    <div class="gallery" style="margin-top:18px">
+      <figure class="shot reveal">
+        <img src="https://avatars.mds.yandex.net/i?id=d668c3e63e73be9b11faed4cd9633bdc227b08ec-9678500-images-thumbs&n=13" alt="Highway freight">
+      </figure>
+      <figure class="shot reveal">
+        <img src="https://avatars.mds.yandex.net/i?id=5818769fae8a2982eebd43b4eaa858ce8e534099-12605172-images-thumbs&n=13" alt="Dispatch screens">
+      </figure>
+      <figure class="shot reveal">
+        <img src="https://avatars.mds.yandex.net/i?id=e73e5a4cd2aefbfffd0c4c3c457f46dfed9efe7e-8221537-images-thumbs&n=13" alt="Containers & yard">
+      </figure>
+      <figure class="shot reveal">
+        <img src="https://avatars.mds.yandex.net/i?id=9382cd8b410f085ceaf18eac4d6daee872ba11fd-8239632-images-thumbs&n=13" alt="Trucks on route">
+      </figure>
+    </div>
+  </section>
 
-<footer>
-  &copy; 2025 V.E. BATIMENT — Tous droits réservés
-</footer>
+  <!-- FEATURES -->
+  <section id="features" class="features">
+    <div class="container">
+      <h2 class="section-title reveal">What We Deliver</h2>
+      <p class="muted reveal">Five pillars that keep your operations running.</p>
+      <div class="features-list">
+        <div class="feature reveal"><span class="dot" aria-hidden="true"></span> Smart dispatch & route optimization to cut dwell time.</div>
+        <div class="feature reveal"><span class="dot" aria-hidden="true"></span> Real-time shipment visibility and proactive alerts.</div>
+        <div class="feature reveal"><span class="dot" aria-hidden="true"></span> Driver onboarding, docs, and compliance assistance.</div>
+        <div class="feature reveal"><span class="dot" aria-hidden="true"></span> Cost tracking & POD management for clean invoicing.</div>
+        <div class="feature reveal"><span class="dot" aria-hidden="true"></span> 24/7 support for exceptions, reschedules, and claims.</div>
+      </div>
+    </div>
+  </section>
 
+  <!-- COMING SOON -->
+  <section id="coming" class="coming">
+    <div class="container" style="text-align:center">
+      <span class="badge">🚀 Coming Soon</span>
+      <h3 class="reveal" style="margin:10px 0 6px">Self-serve client portal with booking, tracking & billing</h3>
+      <div class="marquee" aria-hidden="true">
+        <span>Live ETA</span>
+        <span>ePOD Upload</span>
+        <span>Rate Confirmations</span>
+        <span>Carrier Scorecards</span>
+        <span>Analytics</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="container">
+    <h2 class="section-title reveal">Contact</h2>
+    <div class="contact-grid" style="margin-top:12px">
+      <div class="card reveal">
+        <ul class="list">
+          <li><strong>Company:</strong> SINAN TRANSPORTATION INC.</li>
+          <li><strong>Email:</strong> <a href="mailto:support@sinantran.shop">support@sinantran.shop</a></li>
+          <li><strong>Phone:</strong> <a href="tel:+16312308359">+1 631 230 8359</a></li>
+        </ul>
+        <button class="btn-send" onclick="window.location.href='mailto:support@sinantran.shop'">Send Email</button>
+      </div>
+      <div class="card reveal">
+        <form onsubmit="event.preventDefault(); window.location.href='mailto:support@sinantran.shop?subject=Logistics%20Inquiry&body=' + encodeURIComponent(document.getElementById('msg').value);">
+          <input type="text" placeholder="Your Name" required />
+          <input type="email" placeholder="Your Email" required />
+          <textarea id="msg" placeholder="Shipment details or request"></textarea>
+          <button type="submit" class="btn-send">Contact Us</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">© <span id="year"></span> SINAN TRANSPORTATION INC. — All rights reserved.</div>
+  </footer>
+
+  <script>
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Reveal on scroll
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){ e.target.classList.add('show'); io.unobserve(e.target); }
+      });
+    }, {threshold:.15});
+    document.querySelectorAll('.reveal, .feature').forEach(el=>io.observe(el));
+  </script>
 </body>
 </html>
